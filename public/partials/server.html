@@ -4,7 +4,7 @@
         <h2>{{server.name}}</h2>
       </div>
       <div class="responseTimeSingle">
-        <h3>Response Time {{server.responseTime * 1000 | number:0}}ms</h3>
+        <h3 ng-class="{'good': server.responseTime <= 0.05, 'warning': server.responseTime > 0.05 &&  server.responseTime <= 0.5, 'critical': server.responseTime > 0.5}">Response Time {{server.responseTime * 1000 | number:0}}ms</h3>
         <div class="details">
           <h4>Operating System: {{server.os}}</h4>
           <h4>CPU: {{server.cpu}}</h4>

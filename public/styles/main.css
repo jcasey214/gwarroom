@@ -34,3 +34,15 @@
   width: 50%;
   border: 1px solid black;
 }
+
+.good{
+  background-color: green;
+}
+
+.warning{
+  background-color: yellow;
+}
+
+.critical{
+  background-color: red;
+}
