@@ -4,8 +4,10 @@
       <div class="serverName" >
         <h2>{{server.name}}</h2>
       </div>
-      <div class="responseTime">
-        <h3 ng-class="{'good': server.responseTime <= 0.05, 'warning': server.responseTime > 0.05 &&  server.responseTime <= 0.5, 'critical': server.responseTime > 0.5}">Response Time {{server.responseTime * 1000 | number:0 }}ms</h3>
+      <div class="cardContainer">
+        <div class="responseTime" ng-class="{'good': server.responseTime <= 0.05, 'warning': server.responseTime > 0.05 &&  server.responseTime <= 0.5, 'critical': server.responseTime > 0.5}">
+          <h3>Response Time</h3><h3>{{server.responseTime * 1000 | number:0 }}ms</h3>
+        </div>
       </div>
     </a>
   </div>
