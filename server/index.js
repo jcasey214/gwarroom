@@ -20,6 +20,6 @@ app.get('/wtf', function(request, response){
 })
 
 
-server.listen(8000, function(){
+server.listen(80, function(){
   console.log('listening on port 8000');
 });
