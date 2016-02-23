@@ -9,15 +9,6 @@ var unirest = require('unirest');
 var server = http.Server(app);
 var io = require('socket.io')(server);
 
-// var servers = io
-//   .of('/servers')
-//   .on('connection', function(socket){
-//     warroom(function(error, data){
-//         socket.broadcast.emit('servers', data)
-//     })
-//   });
-//
-
 
 app.get('/api/servers', function(request, response, next){
   warroom(function(error, data){

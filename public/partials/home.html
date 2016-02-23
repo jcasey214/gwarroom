@@ -1,10 +1,12 @@
 <div class="row serverHome">
   <div class="col-md-4 eachServer" ng-repeat="server in servers">
-    <div class="serverName">
-      <h2>{{server.name}}</h2>
-    </div>
-    <div class="responseTime">
-      <h3>Response Time {{server.responseTime * 1000 | number:0}}ms</h3>
-    </div>
+    <a ng-href="/#/server/{{server.id}}">
+      <div class="serverName" >
+        <h2>{{server.name}}</h2>
+      </div>
+      <div class="responseTime">
+        <h3>Response Time {{server.responseTime * 1000 | number:0}}ms</h3>
+      </div>
+    </a>
   </div>
 </div>

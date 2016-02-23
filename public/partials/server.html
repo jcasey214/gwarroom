@@ -1,3 +1,16 @@
-<p>
-  {{servers}}
-</p>
+<div class="row serverHome">
+  <div class="col-md-16 eachServer">
+      <div class="serverName" >
+        <h2>{{server.name}}</h2>
+      </div>
+      <div class="responseTimeSingle">
+        <h3>Response Time {{server.responseTime * 1000 | number:0}}ms</h3>
+        <div class="details">
+          <h4>Operating System: {{server.os}}</h4>
+          <h4>CPU: {{server.cpu}}</h4>
+          <h4>Temperature: {{server.temp}}</h4>
+          <h4>Memory: {{server.memory}}</h4>
+        </div>
+      </div>
+  </div>
+</div>

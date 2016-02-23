@@ -4,7 +4,7 @@ var app = angular.module('WarRoom', ['ngRoute'])
   .when('/', {
     templateUrl: '../partials/home.html',
     controller: 'HomeController',
-  }).when('/:id', {
+  }).when('/server/:id', {
     templateUrl: '../partials/server.html',
     controller: 'ServerController',
   }).otherwise({

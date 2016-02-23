@@ -29,3 +29,8 @@
   width: 90%;
   border: 1px solid black;
 }
+
+.responseTimeSingle>h3{
+  width: 50%;
+  border: 1px solid black;
+}
