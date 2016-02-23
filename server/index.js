@@ -1,6 +1,7 @@
 var express = require('express');
 var socket = require('socket.io');
 var http = require('http');
+var port = process.env.PORT || 8000
 
 var app = express();
 var mongo = require('mongodb');
@@ -20,6 +21,6 @@ app.get('/wtf', function(request, response){
 })
 
 
-server.listen(8000, function(){
-  console.log('listening on port 8000');
+server.listen(port, function(){
+  console.log('server is listening');
 });
