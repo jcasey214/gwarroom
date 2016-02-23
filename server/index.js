@@ -1,13 +1,46 @@
 var express = require('express');
-var socket = require('socket.io');
 var http = require('http');
 var port = process.env.PORT || 8000
+var warroom = require('./warroom-client');
 
 var app = express();
 var mongo = require('mongodb');
 var unirest = require('unirest');
-var io = socket(server);
 var server = http.Server(app);
+var io = require('socket.io')(server);
+
+// var servers = io
+//   .of('/servers')
+//   .on('connection', function(socket){
+//     warroom(function(error, data){
+//         socket.broadcast.emit('servers', data)
+//     })
+//   });
+//
+
+
+app.get('/api/servers', function(request, response, next){
+  warroom(function(error, data){
+    response.json({servers: data.data})
+  })
+});
+
+
+app.get('api/servers/:id', function(request, response, next){
+
+});
+
+app.get('/test', function (request, response, next){
+  warroom(function(error, data){
+    response.send(data);
+  })
+})
+
+io.on('connection', function (socket){
+  warroom(function(error, data){
+    socket.emit('servers', data)
+  })
+})
 
 app.use('/', express.static('public'));
 
@@ -16,9 +49,7 @@ app.use('/', express.static('public'));
 //   console.log(__dirname);
 // })
 
-app.get('/wtf', function(request, response){
-  response.send('What the fuck');
-})
+
 
 
 server.listen(port, function(){
