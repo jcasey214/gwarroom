@@ -12,7 +12,11 @@
   <body>
     <div class="container">
       <div class="page-header">
-      <h1>Galvanize War Room</h1>
+        <h1>Galvanize War Room</h1>
+        <div>
+          <a ng-href="/#/">Overview</a>
+          <a ng-href="/#/settings">Settings</a>
+        </div>
       </div>
       <main ng-view></main>
     </div>
@@ -26,5 +30,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
   </body>
 </html>

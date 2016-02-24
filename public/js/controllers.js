@@ -1,5 +1,5 @@
 angular.module('WarRoom')
-.controller('HomeController', ['$scope', '$rootScope', '$http', '$timeout', function($scope, $rootScope, $http, $timeout){
+.controller('HomeController', ['$scope', '$rootScope', '$http', '$timeout', 'SettingsService', function($scope, $rootScope, $http, $timeout, SettingsService){
   $scope.servers = [];
   var socket = io();
   socket.on('servers', function(data){
@@ -7,9 +7,14 @@ angular.module('WarRoom')
     $scope.servers = data.data;
     $scope.$apply();
   });
+  $scope.warning = function(){
+    return (parseInt(SettingsService.getThresholds().warning) / 1000);
+  };
+  $scope.critical = function(){
+    return (parseInt(SettingsService.getThresholds().critical) / 1000);
+  };
 }])
-.controller('ServerController', ['$scope', '$rootScope', '$routeParams', function($scope, $rootScope, $routeParams){
-  $scope.greeting = "goodbye world";
+.controller('ServerController', ['$scope', '$rootScope', '$routeParams','SettingsService', function($scope, $rootScope, $routeParams, SettingsService){
   $scope.server;
   var socket = io();
   socket.on('servers', function(data){
@@ -21,4 +26,20 @@ angular.module('WarRoom')
       }
     }
   });
+  $scope.warning = SettingsService.warningThreshold / 1000;
+  $scope.critical = SettingsService.criticalThreshold / 1000;
+}])
+.controller('SettingsController', ['$scope', 'SettingsService', function($scope, SettingsService){
+  $scope.greeting = "hello";
+  $scope.warning = function(){
+    return (SettingsService.getThresholds().warning / 1000);
+  };
+  $scope.critical = function(){
+    return (SettingsService.getThresholds().critical / 1000);
+  };
+  $scope.setSettings = function(){
+    SettingsService.setThresholds($scope.warning, $scope.critical);
+    // SettingsService.warningThreshold = $scope.settings.warningThreshold;
+    // SettingsService.criticalThreshold = $scope.settings.criticalThreshold;
+  }
 }])

@@ -6,7 +6,7 @@
         <h3>Average: {{server.avg * 1000 | number: 1}} ms</h3>
       </div>
       <div class="cardContainer">
-        <div class="responseTime" ng-class="{'good': server.responseTime <= 0.05, 'warning': server.responseTime > 0.05 &&  server.responseTime <= 0.5, 'critical': server.responseTime > 0.5}">
+        <div class="responseTime" ng-class="{'good': server.responseTime <= warning(), 'warning': server.responseTime > warning() &&  server.responseTime <= critical(), 'critical': server.responseTime > critical()}">
           <h3>Response Time</h3><h3>{{server.responseTime * 1000 | number:0 }}ms</h3>
         </div>
       </div>
