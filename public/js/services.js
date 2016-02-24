@@ -1,7 +1,7 @@
 angular.module('WarRoom')
 .factory('SettingsService', SettingsService);
 
-var settings = {
+var settings = JSON.parse(localStorage.getItem('settings')).settings || {
     warningThreshold: 50,
     criticalThreshold: 500
 };
@@ -24,6 +24,7 @@ function SettingsService(){
       settings.warningThreshold = warning;
       settings.criticalThreshold = critical;
       console.log(settings);
+      localStorage.setItem('settings', JSON.stringify({settings}));
     }
   };
 };
